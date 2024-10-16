@@ -1,68 +1,82 @@
-# CodeIgniter 4 Application Starter
+# Sistem Manajemen Produk
 
-## What is CodeIgniter?
+Proyek ini adalah sebuah sistem manajemen produk yang dibangun menggunakan framework CodeIgniter 4. Sistem ini menyediakan fitur untuk mengelola data produk, registrasi pengguna, dan autentikasi login.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Fitur
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+- **Manajemen Produk**: 
+  - Tambah produk baru dengan kode, nama, dan harga.
+  - Ubah informasi produk yang sudah ada.
+  - Hapus produk dari sistem.
+  - Lihat daftar semua produk.
+  - Lihat detail produk tertentu.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+- **Registrasi Pengguna**: 
+  - Pengguna dapat mendaftar dengan nama, email, dan password yang terenkripsi.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+- **Autentikasi Login**: 
+  - Pengguna dapat login menggunakan email dan password yang terdaftar.
+  - Sistem menghasilkan token autentikasi untuk sesi pengguna.
 
-## Installation & updates
+## Struktur Proyek
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+- **Controllers**: Mengelola logika aplikasi dan menangani permintaan HTTP.
+  - `ProdukController`: Mengelola operasi CRUD untuk produk.
+  - `LoginController`: Mengelola proses login pengguna.
+  - `RegistrasiController`: Mengelola proses registrasi pengguna.
+  - `RestfulController`: Menyediakan metode respons JSON yang konsisten.
+  - `BaseController`: Kelas dasar untuk semua controller, memuat komponen yang dibutuhkan.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+- **Models**: Mengelola interaksi dengan database.
+  - `MProduk`: Model untuk tabel produk, mengelola data produk.
+  - `MLogin`: Model untuk tabel token anggota, menyimpan token autentikasi.
+  - `MMember`: Model untuk tabel anggota, mengelola data pengguna.
+  - `MRegistrasi`: Model untuk registrasi anggota, menyimpan data pengguna baru.
 
-## Setup
+- **Config/Routes.php**: Mengelola rute aplikasi, mendefinisikan endpoint API untuk setiap fitur.
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+## Instalasi
 
-## Important Change with index.php
+1. Clone repositori ini:
+   ```bash
+   git clone https://github.com/username/repo-name.git
+   ```
+2. Masuk ke direktori proyek:
+   ```bash
+   cd repo-name
+   ```
+3. Instal dependensi menggunakan Composer:
+   ```bash
+   composer install
+   ```
+4. Salin file `.env.example` menjadi `.env` dan sesuaikan pengaturan database Anda.
+5. Jalankan migrasi database jika diperlukan:
+   ```bash
+   php spark migrate
+   ```
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+## Penggunaan
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+1. Jalankan server pengembangan:
+   ```bash
+   php spark serve
+   ```
+2. Akses aplikasi melalui browser di `http://localhost:8080`.
 
-**Please** read the user guide for a better explanation of how CI4 works!
+## Kontribusi
 
-## Repository Management
+Kami menyambut kontribusi dari siapa pun. Silakan fork repositori ini dan kirimkan pull request untuk perbaikan atau fitur baru.
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+1. Fork repositori ini.
+2. Buat branch fitur baru (`git checkout -b fitur-Anda`).
+3. Commit perubahan Anda (`git commit -m 'Menambahkan fitur'`).
+4. Push ke branch (`git push origin fitur-Anda`).
+5. Buat Pull Request.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## Lisensi
 
-## Server Requirements
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+## Kontak
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Untuk pertanyaan lebih lanjut, silakan hubungi kami melalui email: email@domain.com
